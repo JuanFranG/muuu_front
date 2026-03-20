@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muuu App – Flashcards de Cálculo Integral</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="phone-wrapper">
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--              PHONE FRAME               -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="phone-frame">
+    <div class="phone-screen">
+
+      <!-- ══════════════════════════════════ -->
+      <!--  SPLASH                            -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen active" id="screen-splash">
+        <div class="splash-content">
+          <!-- Logo con fondo para splash / carga -->
+          <div class="splash-logo">
+            <img src="img/MUUU_LOGO_CON_FONDO.png" alt="Muuu Logo">
+          </div>
+          <p class="splash-title">Aprende Cálculo Integral<br>con Ada</p>
+          <div class="splash-progress-bar">
+            <div class="splash-progress-fill"></div>
+          </div>
+        </div>
+        <p class="splash-footer">Powered by @CIEUniMagdalena · 2025</p>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  LOGIN                             -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-login">
+        <div class="status-bar" style="padding-top:36px;"></div>
+        <div class="app-header" style="background:transparent;">
+          <button class="back-btn" onclick="goTo('screen-splash')">←</button>
+          <div style="flex:1"></div>
+        </div>
+        <div class="login-body">
+          <!-- Logo con fondo para login -->
+          <div class="logo-small">
+            <img src="img/MUUU_LOGO_CON_FONDO.png" alt="Muuu Logo">
+          </div>
+          <h1 class="screen-title-main">Bienvenido a Muuu</h1>
+          <div class="input-group">
+            <div class="input-field">
+              <span class="input-icon">✉</span>
+              <input type="email" placeholder="Correo electrónico">
+            </div>
+            <div class="input-field">
+              <span class="input-icon">🔒</span>
+              <input type="password" placeholder="Contraseña">
+              <span style="color:var(--muuu-gray-medium);cursor:pointer;font-size:14px;">👁</span>
+            </div>
+          </div>
+          <button class="btn-primary" onclick="goTo('screen-home-student','slide-in-right')">
+            Iniciar sesión
+          </button>
+          <p class="link-text">
+            ¿No tienes cuenta?
+            <a onclick="goTo('screen-role','slide-in-right')">Regístrate gratis aquí</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  SELECCIÓN DE ROL                  -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-role">
+        <div class="status-bar" style="padding-top:36px;"></div>
+        <div class="app-header" style="background:transparent;">
+          <button class="back-btn" onclick="goTo('screen-login','slide-in-left')">←</button>
+        </div>
+        <div class="role-body">
+          <!-- Logo con fondo en registro -->
+          <div class="logo-small">
+            <img src="img/MUUU_LOGO_CON_FONDO.png" alt="Muuu Logo">
+          </div>
+          <p class="role-question">¿Cómo quieres usar Muuu?</p>
+          <div class="role-card student" onclick="goTo('screen-home-student','slide-in-right')">
+            <div class="role-icon student">🎓</div>
+            <div class="role-info">
+              <div class="role-name student">Soy Estudiante</div>
+              <div class="role-desc">Quiero aprender</div>
+            </div>
+            <span class="role-arrow">→</span>
+          </div>
+          <div class="role-card teacher" onclick="goTo('screen-home-teacher','slide-in-right')">
+            <div class="role-icon teacher">📚</div>
+            <div class="role-info">
+              <div class="role-name teacher">Soy Docente</div>
+              <div class="role-desc">Quiero enseñar</div>
+            </div>
+            <span class="role-arrow">→</span>
+          </div>
+          <p class="role-footer">Powered by @CIEUniMagdalena · 2025</p>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  ESTUDIANTE – HOME                 -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-home-student">
+        <div class="home-student-top">
+          <div class="home-user-info">
+            <div class="avatar-circle">A</div>
+            <span class="home-greeting">Hola, Ada</span>
+          </div>
+          <div class="home-top-actions">
+            <div class="streak-badge">🔥 <span>5</span></div>
+            <div class="notif-btn">🔔<div class="notif-dot"></div></div>
+          </div>
+        </div>
+        <div class="home-student-scroll">
+          <!-- Logo sin fondo dentro de la app -->
+          <div class="home-ada-logo">
+            <img class="home-ada-img" src="img/MUUU_LOGO.png" alt="Ada – Muuu">
+          </div>
+          <p class="section-question">¿Qué quieres hacer hoy?</p>
+          <div class="home-grid">
+            <div class="grid-card" onclick="goTo('screen-aprende','slide-in-right')">
+              <span class="new-badge">NUEVO</span>
+              <span class="card-icon">📖</span>
+              <div class="card-label">Aprende</div>
+              <div class="card-sublabel">un Poco</div>
+            </div>
+            <div class="grid-card lighter" onclick="goTo('screen-prueba','slide-in-right')">
+              <span class="card-icon">💡</span>
+              <div class="card-label">Ponte a</div>
+              <div class="card-sublabel">Prueba</div>
+            </div>
+            <div class="grid-card" onclick="goTo('screen-desafio','slide-in-right')">
+              <span class="card-icon">⚔️</span>
+              <div class="card-label">Desafía a</div>
+              <div class="card-sublabel">Alguien</div>
+            </div>
+            <div class="grid-card lighter" onclick="goTo('screen-progreso','slide-in-right')">
+              <span class="card-icon">📊</span>
+              <div class="card-label">Mi</div>
+              <div class="card-sublabel">Progreso</div>
+            </div>
+          </div>
+          <div class="ranking-fab" onclick="goTo('screen-ranking','slide-in-right')">🏆</div>
+          <div class="progress-section">
+            <p class="progress-section-title">INTEG. POR PARTES</p>
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>Sust. Trigonométrica</span><span>34%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width:34%"></div>
+              </div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label">
+                <span>Fracciones Parciales</span><span>80%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width:80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Bottom Nav -->
+        <div class="bottom-nav">
+          <div class="nav-item active" onclick="goTo('screen-home-student')">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label" style="color:var(--muuu-purple-primary)">Inicio</span>
+          </div>
+          <div class="nav-item" onclick="goTo('screen-menu','slide-in-right')">
+            <span class="nav-icon">☰</span>
+            <span class="nav-label">Menú</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  APRENDE UN POCO                   -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-aprende">
+        <div class="status-bar" style="padding-top:36px;background:white;"></div>
+        <div class="app-header" style="background:white;border-bottom:1px solid rgba(155,126,199,.1);">
+          <button class="back-btn" onclick="goTo('screen-home-student','slide-in-left')">←</button>
+          <span class="header-title">Aprende un Poco 💡</span>
+          <span class="header-action">✦</span>
+        </div>
+        <div class="screen-scroll">
+          <div class="search-bar">
+            <span style="color:var(--muuu-gray-medium)">🔍</span>
+            <input type="text" placeholder="Buscar guía o tema...">
+          </div>
+          <div class="filter-tabs">
+            <div class="filter-tab active"  onclick="setActiveTab(this)">Todas</div>
+            <div class="filter-tab" onclick="setActiveTab(this)">Guías PDF</div>
+            <div class="filter-tab" onclick="setActiveTab(this)">Videos</div>
+            <div class="filter-tab" onclick="setActiveTab(this)">Resumen</div>
+          </div>
+          <div class="section-header">✦ ★ RECIÉN AGREGADO POR EL DOCENTE</div>
+          <div class="content-card">
+            <div class="content-thumb" style="background:var(--muuu-purple-soft);">∫</div>
+            <div class="content-info">
+              <span class="difficulty-badge diff-intermedio">Intermedio</span>
+              <div class="content-title">Guía completa: Integración por Partes</div>
+              <div class="content-meta">Prof. Garrido · PDF · 12 páginas</div>
+              <div class="content-status status-unread">Sin leer</div>
+            </div>
+          </div>
+          <div class="section-header" style="margin-top:8px;">📚 TEMAS DISPONIBLES</div>
+          <div class="content-card">
+            <div class="content-thumb" style="background:#ffe0e0;">Σ</div>
+            <div class="content-info">
+              <span class="difficulty-badge diff-avanzado">Avanzado</span>
+              <div class="content-title">Sustitución Trigonométrica</div>
+              <div class="content-meta">Prof. Garrido · Resumen · 5 pág.</div>
+              <div class="progress-mini"><div class="progress-mini-fill" style="width:40%"></div></div>
+              <div style="text-align:right;font-size:10px;font-weight:700;color:var(--muuu-purple-primary);margin-top:2px;">40%</div>
+            </div>
+          </div>
+          <div class="content-card">
+            <div class="content-thumb" style="background:#ffe8d0;">⅔</div>
+            <div class="content-info">
+              <span class="difficulty-badge diff-intermedio">Intermedio</span>
+              <div class="content-title">Fracciones Parciales</div>
+              <div class="content-meta">Prof. Garrido · Resumen · 5 pág.</div>
+              <div class="progress-mini"><div class="progress-mini-fill" style="width:80%"></div></div>
+              <div style="text-align:right;font-size:10px;font-weight:700;color:var(--muuu-purple-primary);margin-top:2px;">80%</div>
+            </div>
+          </div>
+          <div class="section-header" style="margin-top:8px;">✅ COMPLETADOS</div>
+          <div class="content-card">
+            <div class="content-thumb" style="background:#d4edda;">∫x</div>
+            <div class="content-info">
+              <span class="difficulty-badge diff-basico">Básico</span>
+              <div class="content-title">Integrales Inmediatas</div>
+              <div class="content-meta">Prof. Garrido · Guía PDF · 8 pág.</div>
+              <div class="progress-mini">
+                <div class="progress-mini-fill" style="width:100%;background:var(--muuu-success)"></div>
+              </div>
+              <div style="text-align:right;font-size:10px;font-weight:700;color:var(--muuu-success);margin-top:2px;">100%</div>
+            </div>
+          </div>
+          <div class="aprende-padding"></div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  PONTE A PRUEBA                    -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-prueba">
+        <div class="prueba-header">
+          <div class="prueba-title-row">
+            <button class="back-btn" onclick="goTo('screen-home-student','slide-in-left')">←</button>
+            <span class="prueba-title-text">Ponte a Prueba 🏆</span>
+            <div class="lives-row" id="lives">❤️❤️❤️</div>
+          </div>
+          <div class="prueba-stats">
+            <div class="stat-pill stat-correct">✅ <span id="correct-count">0</span></div>
+            <div class="stat-pill stat-wrong">❌ <span id="wrong-count">0</span></div>
+            <div class="stat-pill stat-skip">⏭ 0</div>
+            <div class="stat-pill stat-time">⏱ <span id="timer">0:00</span></div>
+          </div>
+          <div class="prueba-progress-bar">
+            <span id="question-label">Pregunta 1 de 20</span>
+            <div class="prueba-bar-track">
+              <div class="prueba-bar-fill" id="prueba-bar" style="width:5%"></div>
+            </div>
+            <span id="pct-label">5%</span>
+          </div>
+        </div>
+
+        <div class="prueba-scroll" id="prueba-scroll">
+          <span class="topic-tag">INTEGRALES POR PARTES</span>
+          <p class="question-label">Resuelve la siguiente integral:</p>
+
+          <!-- FLIP CARD: clic voltea y muestra SOLO la respuesta -->
+          <div class="flip-card-container" id="flip-container" onclick="flipCard()">
+            <div class="flip-card" id="flip-card">
+              <div class="flip-card-front">
+                <span class="nemotecnia-badge">Nemotécnica</span>
+                <div class="formula-display">
+                  ∫ x·e<sup>x</sup>dx
+                </div>
+              </div>
+              <div class="flip-card-back">
+                <div class="answer-label">RESPUESTA CORRECTA</div>
+                <div class="answer-formula">x·e<sup>x</sup> − e<sup>x</sup> + C</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="option-list">
+            <button class="option-btn" onclick="selectOption(this,'A')" id="opt-A">
+              <span class="option-letter">A</span> x·e<sup>x</sup> − e<sup>x</sup> + C
+            </button>
+            <button class="option-btn" onclick="selectOption(this,'B')" id="opt-B">
+              <span class="option-letter">B</span> e<sup>x</sup> + C
+            </button>
+            <button class="option-btn" onclick="selectOption(this,'C')" id="opt-C">
+              <span class="option-letter">C</span> x·e<sup>x</sup> + C
+            </button>
+            <button class="option-btn" onclick="selectOption(this,'D')" id="opt-D">
+              <span class="option-letter">D</span> (x−1)·e<sup>x</sup> + C
+            </button>
+          </div>
+          <button class="verify-btn" id="verify-btn" onclick="verifyAnswer()">
+            VERIFICAR RESPUESTA
+          </button>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  DESAFÍO                           -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-desafio">
+        <div class="desafio-header-bg">
+          <div class="desafio-header-title-row">
+            <button class="back-btn" style="color:white;" onclick="goTo('screen-home-student','slide-in-left')">←</button>
+            <span class="desafio-h-title" style="flex:1;text-align:center;">Desafía a Alguien</span>
+            <span style="font-size:16px;cursor:pointer;color:white;">✕</span>
+          </div>
+          <p class="desafio-subtitle">ARENA DE INTEGRALES</p>
+          <div class="vs-row">
+            <div class="vs-player">
+              <div class="vs-avatar">M</div>
+              <span class="vs-name">Tú</span>
+            </div>
+            <div class="vs-badge">vs</div>
+            <div class="vs-player">
+              <div class="vs-avatar question">?</div>
+              <span class="vs-name">Rival</span>
+            </div>
+          </div>
+        </div>
+        <div class="desafio-scroll">
+          <div class="mode-selector">
+            <div class="mode-btn active" onclick="setModeActive(this)">
+              <span class="mode-icon">➕</span> Crear sala
+            </div>
+            <div class="mode-btn" onclick="setModeActive(this)">
+              <span class="mode-icon">🔑</span> Unirse
+            </div>
+            <div class="mode-btn" onclick="setModeActive(this)">
+              <span class="mode-icon">🎲</span> Aleatorio
+            </div>
+          </div>
+          <div class="room-code-card">
+            <div class="room-code-label">CÓDIGO DE SALA</div>
+            <div class="room-code-text">MU·4829</div>
+            <div class="room-code-sub">Comparte con tu rival</div>
+          </div>
+          <div class="select-row">
+            <select class="select-field">
+              <option>Todos los temas</option>
+              <option>Integ. por Partes</option>
+              <option>Fracciones Parciales</option>
+              <option>Sust. Trigonométrica</option>
+            </select>
+            <select class="select-field">
+              <option>5 preguntas</option>
+              <option>10 preguntas</option>
+              <option>20 preguntas</option>
+            </select>
+          </div>
+          <button class="btn-primary" onclick="goTo('screen-sala-desafio','slide-in-right')"
+                  style="margin-bottom:10px;">
+            Iniciar Desafío
+          </button>
+          <button style="width:100%;padding:12px;background:white;border:1.5px solid var(--muuu-purple-light);border-radius:12px;font-family:var(--font-primary);font-size:13px;font-weight:600;color:var(--muuu-purple-primary);cursor:pointer;margin-bottom:16px;">
+            Copiar código
+          </button>
+          <p class="recent-title">ÚLTIMOS ENFRENTAMIENTOS</p>
+          <div class="recent-item">
+            <div class="recent-avatar">C</div>
+            <div class="recent-info">
+              <div class="recent-name">Carlos G.</div>
+              <div class="recent-result">Victoria · 4/5 correctas</div>
+            </div>
+            <div class="revancha-btn">Revancha</div>
+          </div>
+          <div class="recent-item">
+            <div class="recent-avatar" style="background:#9B7EC7;">L</div>
+            <div class="recent-info">
+              <div class="recent-name">Laura M.</div>
+              <div class="recent-result" style="color:var(--muuu-error);">Derrota · 2/5 correctas</div>
+            </div>
+            <div class="revancha-btn">Revancha</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  SALA DE DESAFÍO                   -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-sala-desafio">
+        <div class="sala-header">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <button class="back-btn" style="color:white;" onclick="goTo('screen-desafio','slide-in-left')">←</button>
+            <span style="font-size:16px;font-weight:700;color:white;flex:1;text-align:center;">Sala de Desafío ⚔️</span>
+            <span style="color:white;font-size:14px;cursor:pointer;">✕</span>
+          </div>
+          <div class="sala-vs-row">
+            <div class="sala-player">
+              <div class="sala-avatar">M</div>
+              <span class="sala-pname">Tú</span>
+            </div>
+            <div class="vs-badge">vs</div>
+            <div class="sala-player">
+              <div class="sala-avatar waiting">?</div>
+              <span class="sala-pname">Esperando...</span>
+            </div>
+          </div>
+        </div>
+        <div class="sala-scroll">
+          <div class="room-code-big">Comparte este código con tu rival</div>
+          <div class="code-display">MU·4829</div>
+          <button class="copy-btn">📋 Copiar código</button>
+          <div class="waiting-card">
+            <div class="waiting-dot"></div>
+            <div>
+              <div class="waiting-text">Esperando que se una el rival...</div>
+              <div class="waiting-sub">
+                La partida se inicia automáticamente cuando el rival ingrese con el código MU-4829
+              </div>
+            </div>
+          </div>
+          <div class="sala-config">
+            <div class="sala-config-title">CONFIGURACIÓN</div>
+            <div class="sala-config-row">
+              <span class="sala-config-key">Tema</span>
+              <span class="sala-config-val">Todos los temas</span>
+            </div>
+            <div class="sala-config-row">
+              <span class="sala-config-key">Preguntas</span>
+              <span class="sala-config-val">5 preguntas</span>
+            </div>
+            <div class="sala-config-row">
+              <span class="sala-config-key">Estado</span>
+              <span class="sala-config-val orange">● En espera</span>
+            </div>
+          </div>
+          <button class="cancel-btn">✕ Cancelar sala</button>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  MI PROGRESO                       -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-progreso">
+        <div class="progreso-header-bg">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <button class="back-btn" style="color:white;" onclick="goTo('screen-home-student','slide-in-left')">←</button>
+            <span style="font-size:16px;font-weight:700;color:white;">Mi Progreso 📊</span>
+            <div style="width:32px;"></div>
+          </div>
+          <div class="progreso-points">1980</div>
+          <div class="progreso-points-label">PUNTOS TOTALES</div>
+        </div>
+        <div class="progreso-scroll">
+          <div class="stats-row">
+            <div class="stat-card stat-green"><div class="val">47</div><div class="lbl">Dominas</div></div>
+            <div class="stat-card stat-purple"><div class="val">312</div><div class="lbl">Conoces</div></div>
+            <div class="stat-card stat-orange"><div class="val">5 🔥</div><div class="lbl"></div></div>
+            <div class="stat-card stat-orange2"><div class="val">#4</div><div class="lbl">Ranking</div></div>
+          </div>
+          <p class="progress-section-h">PROGRESO POR TEMA</p>
+          <div class="topic-progress-item">
+            <div class="topic-row"><span>Integrales Inmediatas</span><span class="topic-pct pct-green">90%</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:90%;background:var(--muuu-success)"></div></div>
+          </div>
+          <div class="topic-progress-item">
+            <div class="topic-row"><span>Integración por Partes</span><span class="topic-pct pct-yellow">65%</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:65%;background:var(--muuu-warning)"></div></div>
+          </div>
+          <div class="topic-progress-item">
+            <div class="topic-row"><span>Fracciones Parciales</span><span class="topic-pct pct-orange">40%</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:40%;background:#e67e22"></div></div>
+          </div>
+          <div class="topic-progress-item">
+            <div class="topic-row"><span>Sust. Trigonométrica</span><span class="topic-pct pct-red">20%</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:20%;background:var(--muuu-error)"></div></div>
+          </div>
+          <p class="progress-section-h" style="margin-top:16px;">LOGROS</p>
+          <div class="logros-grid">
+            <div class="logro-card"><span class="logro-icon">🔥</span><span class="logro-lbl active-l">5 días</span></div>
+            <div class="logro-card"><span class="logro-icon">⚡</span><span class="logro-lbl active-l">10 racha</span></div>
+            <div class="logro-card"><span class="logro-icon" style="opacity:.3;">🏆</span><span class="logro-lbl locked">Top 3</span></div>
+            <div class="logro-card"><span class="logro-icon" style="opacity:.3;">💯</span><span class="logro-lbl locked">100</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  RANKING                           -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-ranking">
+        <div class="ranking-top">
+          <div class="ranking-title-row">
+            <button class="back-btn" onclick="goTo('screen-home-student','slide-in-left')">←</button>
+            <span class="ranking-title">🏆 Rankings</span>
+            <div style="width:32px;"></div>
+          </div>
+          <div class="my-avatar">J</div>
+        </div>
+        <div class="ranking-scroll">
+          <div class="ranking-item gold">
+            <div class="rank-num">1</div>
+            <div class="rank-avatar">A</div>
+            <div class="rank-info"><div class="rank-name">Ana García</div><div class="rank-pts">2450 puntos</div></div>
+            <span class="rank-badge">👑</span>
+          </div>
+          <div class="ranking-item silver">
+            <div class="rank-num">2</div>
+            <div class="rank-avatar">C</div>
+            <div class="rank-info"><div class="rank-name" style="color:#333;">Carlos López</div><div class="rank-pts">2280 puntos</div></div>
+            <span class="rank-badge">🥈</span>
+          </div>
+          <div class="ranking-item bronze">
+            <div class="rank-num">3</div>
+            <div class="rank-avatar">M</div>
+            <div class="rank-info"><div class="rank-name">María Rodríguez</div><div class="rank-pts">2150 puntos</div></div>
+            <span class="rank-badge">🥉</span>
+          </div>
+          <div class="ranking-item me">
+            <div class="rank-num">4</div>
+            <div class="rank-avatar">J</div>
+            <div class="rank-info"><div class="rank-name">Juan Martínez</div><div class="rank-pts">1980 puntos</div></div>
+            <span class="tu-badge">TÚ</span>
+          </div>
+          <div class="ranking-item">
+            <div class="rank-num" style="background:var(--muuu-purple-soft);color:var(--muuu-purple-dark);">5</div>
+            <div class="rank-avatar" style="background:var(--muuu-purple-soft);color:var(--muuu-purple-dark);">L</div>
+            <div class="rank-info">
+              <div class="rank-name" style="color:var(--texto-principal);">Laura Pérez</div>
+              <div class="rank-pts" style="color:var(--texto-secundario);">1850 puntos</div>
+            </div>
+          </div>
+        </div>
+        <div class="ranking-footer">
+          <div class="ranking-footer-label">🏅 Te faltan 170 puntos para el podio</div>
+          <div class="ranking-footer-bar"><div class="ranking-footer-fill"></div></div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  MENÚ ESTUDIANTE                   -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-menu">
+        <div class="status-bar" style="padding-top:36px;background:white;"></div>
+        <div class="app-header" style="background:white;border-bottom:1px solid rgba(155,126,199,.1);">
+          <button class="back-btn" onclick="goTo('screen-home-student','slide-in-left')">←</button>
+          <span class="header-title">Menú</span>
+          <div style="width:32px;"></div>
+        </div>
+        <div class="menu-scroll">
+          <div class="menu-top">
+            <div class="menu-avatar">A</div>
+            <div class="menu-user-name">Ada</div>
+            <div class="menu-user-role">Estudiante</div>
+          </div>
+          <div class="menu-item" onclick="goTo('screen-perfil','slide-in-right')">
+            <div class="menu-item-icon">👤</div>
+            <div class="menu-item-info">
+              <div class="menu-item-title">Mi Perfil</div>
+              <div class="menu-item-sub">Ver y editar información personal</div>
+            </div>
+            <span style="color:var(--muuu-gray-medium);">›</span>
+          </div>
+          <div class="menu-item" onclick="goTo('screen-config','slide-in-right')">
+            <div class="menu-item-icon">⚙️</div>
+            <div class="menu-item-info">
+              <div class="menu-item-title">Configuración</div>
+              <div class="menu-item-sub">Ajustes y preferencias</div>
+            </div>
+            <span style="color:var(--muuu-gray-medium);">›</span>
+          </div>
+          <!-- Logo sin fondo en interfaz -->
+          <div class="menu-logo">
+            <img src="img/MUUU_LOGO.png" alt="Muuu" style="height:60px;object-fit:contain;opacity:.6;">
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  MI PERFIL – ESTUDIANTE            -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-perfil">
+        <div class="status-bar" style="padding-top:36px;background:var(--muuu-purple-primary);"></div>
+        <div class="app-header purple">
+          <button class="back-btn" style="color:white;" onclick="goTo('screen-menu','slide-in-left')">←</button>
+          <span class="header-title" style="color:white;">Mi Perfil</span>
+          <div style="width:32px;"></div>
+        </div>
+        <div class="perfil-scroll">
+          <div class="perfil-top">
+            <div class="perfil-avatar">J
+              <div class="edit-avatar-btn">✏️</div>
+            </div>
+            <div class="perfil-name">Juan Pérez</div>
+            <div class="perfil-level">Nivel 5</div>
+          </div>
+          <div class="perfil-stats-row">
+            <div class="perfil-stat">
+              <div class="perfil-stat-icon">🏆</div>
+              <div class="perfil-stat-val">1850</div>
+              <div class="perfil-stat-lbl">Puntos</div>
+            </div>
+            <div class="perfil-stat">
+              <div class="perfil-stat-icon">📖</div>
+              <div class="perfil-stat-val">42</div>
+              <div class="perfil-stat-lbl">Cards</div>
+            </div>
+            <div class="perfil-stat">
+              <div class="perfil-stat-icon">🎯</div>
+              <div class="perfil-stat-val">7</div>
+              <div class="perfil-stat-lbl">Días</div>
+            </div>
+          </div>
+          <div class="perfil-info-card">
+            <div class="perfil-info-title">Información Personal</div>
+            <div class="perfil-info-item">
+              <span class="info-icon">🎓</span>
+              <div class="info-text">
+                <div class="info-label">Código Estudiantil</div>
+                <div class="info-value">2019215047</div>
+              </div>
+            </div>
+            <div class="perfil-info-item">
+              <span class="info-icon">✉️</span>
+              <div class="info-text">
+                <div class="info-label">Correo Electrónico</div>
+                <div class="info-value">juan.perez@unimagdalena.edu.co</div>
+              </div>
+            </div>
+            <div class="perfil-info-item">
+              <span class="info-icon">📅</span>
+              <div class="info-text">
+                <div class="info-label">Fecha de Registro</div>
+                <div class="info-value">15 Enero 2025</div>
+              </div>
+            </div>
+          </div>
+          <div class="perfil-btn">
+            <button class="btn-primary">Editar Perfil</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  CONFIGURACIÓN – ESTUDIANTE        -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-config">
+        <div class="status-bar" style="padding-top:36px;background:var(--muuu-purple-primary);"></div>
+        <div class="app-header purple">
+          <button class="back-btn" style="color:white;" onclick="goTo('screen-menu','slide-in-left')">←</button>
+          <span class="header-title" style="color:white;">Configuración</span>
+          <div style="width:32px;"></div>
+        </div>
+        <div class="config-scroll">
+          <div class="config-card">
+            <div class="config-card-title">Preferencias</div>
+            <div class="config-item">
+              <div class="config-item-icon">🔔</div>
+              <div class="config-item-info">
+                <div class="config-item-label">Notificaciones</div>
+                <div class="config-item-sub">Recibir alertas</div>
+              </div>
+              <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div class="config-item">
+              <div class="config-item-icon">🌙</div>
+              <div class="config-item-info">
+                <div class="config-item-label">Modo Oscuro</div>
+                <div class="config-item-sub">Próximamente</div>
+              </div>
+              <div class="toggle" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div class="config-item">
+              <div class="config-item-icon">🔊</div>
+              <div class="config-item-info">
+                <div class="config-item-label">Sonido</div>
+                <div class="config-item-sub">Efectos de sonido</div>
+              </div>
+              <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+            </div>
+          </div>
+          <div class="config-card">
+            <div class="config-card-title">General</div>
+            <div class="config-item">
+              <div class="config-item-icon">🌐</div>
+              <div class="config-item-info">
+                <div class="config-item-label">Idioma</div>
+                <div class="config-item-sub">Español</div>
+              </div>
+              <span class="config-item-action">›</span>
+            </div>
+            <div class="config-item">
+              <div class="config-item-icon">🛡️</div>
+              <div class="config-item-info">
+                <div class="config-item-label">Privacidad y Seguridad</div>
+                <div class="config-item-sub">Gestiona tus datos</div>
+              </div>
+              <span class="config-item-action">›</span>
+            </div>
+            <div class="config-item">
+              <div class="config-item-icon">❓</div>
+              <div class="config-item-info">
+                <div class="config-item-label">Ayuda y Soporte</div>
+                <div class="config-item-sub">Centro de ayuda</div>
+              </div>
+              <span class="config-item-action">›</span>
+            </div>
+          </div>
+          <button class="btn-logout" onclick="goTo('screen-login','slide-in-left')">↪ Cerrar Sesión</button>
+          <div class="config-footer">
+            <div>Versión 1.0.0</div>
+            <div>© 2025 Muuu – Universidad del Magdalena</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  DOCENTE – HOME                    -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-home-teacher">
+        <div class="teacher-home-top">
+          <div class="teacher-top-row">
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="avatar-circle yellow">R</div>
+                <div>
+                  <div class="teacher-greeting">Prof. García</div>
+                  <div class="teacher-role-badge">Docente</div>
+                </div>
+              </div>
+              <div class="teacher-meta">
+                <div class="teacher-meta-item">📚 156 flashcards</div>
+                <div class="teacher-meta-item">👥 89 estudiantes</div>
+              </div>
+            </div>
+            <div class="notif-btn" style="background:rgba(255,255,255,.3);">
+              🔔<div class="notif-dot"></div>
+            </div>
+          </div>
+        </div>
+        <div class="teacher-home-scroll">
+          <!-- Logo sin fondo en interfaz docente -->
+          <div style="display:flex;justify-content:center;margin-bottom:12px;">
+            <img src="img/MUUU_LOGO.png" alt="Muuu" style="height:50px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.2));">
+          </div>
+          <div class="teacher-cta" onclick="goTo('screen-flashcard-designer','slide-in-right')">
+            <div class="teacher-cta-icon">✏️</div>
+            <div class="teacher-cta-info">
+              <div class="teacher-cta-title">Diseñar Flashcard</div>
+              <div class="teacher-cta-sub">Crea nuevas preguntas</div>
+            </div>
+            <span class="teacher-cta-arrow">›</span>
+          </div>
+          <div class="teacher-stats-grid">
+            <div class="teacher-stat-card">
+              <div class="teacher-stat-icon">📋</div>
+              <div class="teacher-stat-val">156</div>
+              <div class="teacher-stat-lbl">Mis Flashcards</div>
+            </div>
+            <div class="teacher-stat-card">
+              <div class="teacher-stat-icon">📊</div>
+              <div class="teacher-stat-val">89%</div>
+              <div class="teacher-stat-lbl">Tasa de aciertos</div>
+            </div>
+            <div class="teacher-stat-card">
+              <div class="teacher-stat-icon">🗃️</div>
+              <div class="teacher-stat-val">342</div>
+              <div class="teacher-stat-lbl">Banco preguntas</div>
+            </div>
+            <div class="teacher-stat-card">
+              <div class="teacher-stat-icon">🏷️</div>
+              <div class="teacher-stat-val">12</div>
+              <div class="teacher-stat-lbl">Categorías</div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-nav teacher-nav">
+          <div class="nav-item teacher-item active" onclick="goTo('screen-home-teacher')">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label" style="color:var(--muuu-yellow-dark)">Inicio</span>
+          </div>
+          <div class="nav-item teacher-item" onclick="goTo('screen-perfil-docente','slide-in-right')">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Perfil</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  DISEÑAR FLASHCARD                 -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-flashcard-designer">
+        <div class="status-bar" style="padding-top:36px;background:var(--muuu-yellow-dark);"></div>
+        <div class="app-header yellow">
+          <button class="back-btn teacher-back" onclick="goTo('screen-home-teacher','slide-in-left')">←</button>
+          <span class="header-title">Diseñar Flashcard 🎨</span>
+          <button style="background:var(--muuu-black-soft);color:white;border:none;border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer;">
+            Guardar
+          </button>
+        </div>
+        <div class="flashcard-scroll">
+          <div class="preview-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span class="preview-label">VISTA PREVIA</span>
+              <span class="preview-eye">👁</span>
+            </div>
+            <div class="preview-question">Resuelve la siguiente integral:</div>
+            <div class="preview-formula">∫ x·e<sup>x</sup>dx</div>
+            <div class="preview-options">A) Opción A<br>B) Opción B</div>
+          </div>
+          <div class="form-section">
+            <div class="form-section-title">1. Pregunta Principal <span>*</span></div>
+            <textarea class="form-textarea" placeholder="Escribe tu pregunta aquí. Ejemplo: Resuelve la siguiente integral..."></textarea>
+            <div class="format-bar">
+              <button class="format-btn"><b>B</b></button>
+              <button class="format-btn"><i>I</i></button>
+              <button class="format-btn"><u>U</u></button>
+              <button class="format-btn">∫</button>
+              <button class="format-btn">Σ</button>
+              <button class="format-btn">√</button>
+              <button class="format-btn">x²</button>
+              <button class="format-btn">x₂</button>
+              <button class="format-btn">π</button>
+              <button class="format-btn">∞</button>
+            </div>
+            <div class="insert-row">
+              <button class="insert-btn">🖼 Insertar Imagen</button>
+              <button class="insert-btn">f(x) Insertar LaTeX</button>
+            </div>
+          </div>
+          <div class="form-section">
+            <div class="form-section-title">2. Opciones (Respuesta Múltiple) <span>*</span></div>
+            <div style="font-size:11px;color:var(--texto-secundario);margin-bottom:10px;">Marca la opción correcta con el checkbox ✓</div>
+            <div class="option-input-row">
+              <div class="option-letter-label">A</div>
+              <input class="option-input" type="text" placeholder="Escribe la opción A">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+                <input type="checkbox" style="width:16px;height:16px;">
+                <span class="option-check-label">Correcta</span>
+              </div>
+            </div>
+            <div class="option-input-row">
+              <div class="option-letter-label">B</div>
+              <input class="option-input" type="text" placeholder="Escribe la opción B">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+                <input type="checkbox" style="width:16px;height:16px;">
+                <span class="option-check-label">Correcta</span>
+              </div>
+            </div>
+            <div class="option-input-row">
+              <div class="option-letter-label">C</div>
+              <input class="option-input" type="text" placeholder="Escribe la opción C">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+                <input type="checkbox" style="width:16px;height:16px;">
+                <span class="option-check-label">Correcta</span>
+              </div>
+            </div>
+            <div class="option-input-row">
+              <div class="option-letter-label" style="background:var(--muuu-yellow-light);color:#a07000;">D</div>
+              <input class="option-input" type="text" placeholder="Escribe la opción D">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+                <input type="checkbox" style="width:16px;height:16px;">
+                <span class="option-check-label">Correcta</span>
+              </div>
+            </div>
+          </div>
+          <div class="flashcard-actions">
+            <button class="btn-borrador">Guardar Borrador</button>
+            <button class="btn-publish">✓ PUBLICAR</button>
+          </div>
+          <div style="text-align:center;font-size:11px;color:var(--texto-secundario);margin-top:8px;">
+            ★ Vista previa como estudiante
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  PERFIL DOCENTE                    -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-perfil-docente">
+        <div class="status-bar" style="padding-top:36px;background:var(--muuu-yellow-dark);"></div>
+        <div class="app-header yellow">
+          <button class="back-btn teacher-back" onclick="goTo('screen-home-teacher','slide-in-left')">←</button>
+          <span class="header-title">Mi Perfil</span>
+          <div style="width:32px;"></div>
+        </div>
+        <div class="perfil-scroll" style="background:var(--muuu-yellow-pale);">
+          <div class="perfil-top" style="background:var(--muuu-yellow-dark);padding-top:20px;">
+            <div class="perfil-avatar teacher-av">M
+              <div class="edit-avatar-btn">✏️</div>
+            </div>
+            <div class="perfil-name">María García</div>
+            <div class="perfil-level teacher-badge">Matemáticas</div>
+          </div>
+          <div class="perfil-stats-row" style="grid-template-columns:1fr 1fr;">
+            <div class="perfil-stat">
+              <div class="perfil-stat-icon">👥</div>
+              <div class="perfil-stat-val">124</div>
+              <div class="perfil-stat-lbl">Estudiantes</div>
+            </div>
+            <div class="perfil-stat">
+              <div class="perfil-stat-icon">📖</div>
+              <div class="perfil-stat-val">87</div>
+              <div class="perfil-stat-lbl">Cards</div>
+            </div>
+          </div>
+          <div class="perfil-info-card" style="background:white;">
+            <div class="perfil-info-title">Información Personal</div>
+            <div class="perfil-info-item teacher-item">
+              <span class="info-icon">🪪</span>
+              <div class="info-text">
+                <div class="info-label">Nº de identificación</div>
+                <div class="info-value">DOC-2024001</div>
+              </div>
+            </div>
+            <div class="perfil-info-item teacher-item">
+              <span class="info-icon">✉️</span>
+              <div class="info-text">
+                <div class="info-label">Correo electrónico</div>
+                <div class="info-value">maria.garcia@midominio.edu.co</div>
+              </div>
+            </div>
+            <div class="perfil-info-item teacher-item">
+              <span class="info-icon">📅</span>
+              <div class="info-text">
+                <div class="info-label">Fecha de registro</div>
+                <div class="info-value">10 Enero 2025</div>
+              </div>
+            </div>
+          </div>
+          <div class="perfil-btn">
+            <button class="btn-primary btn-teacher-primary">Editar Perfil</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════ -->
+      <!--  CONFIGURACIÓN DOCENTE             -->
+      <!-- ══════════════════════════════════ -->
+      <div class="screen" id="screen-config-docente">
+        <div class="status-bar" style="padding-top:36px;background:var(--muuu-yellow-dark);"></div>
+        <div class="app-header yellow">
+          <button class="back-btn teacher-back" onclick="goTo('screen-home-teacher','slide-in-left')">←</button>
+          <span class="header-title">Configuración</span>
+          <div style="width:32px;"></div>
+        </div>
+        <div class="config-scroll" style="background:var(--muuu-yellow-pale);">
+          <div class="config-card">
+            <div class="config-card-title">Preferencias</div>
+            <div class="config-item">
+              <div class="config-item-icon teacher-icon">🔔</div>
+              <div class="config-item-info">
+                <div class="config-item-label">Notificaciones</div>
+                <div class="config-item-sub">Recibir alertas</div>
+              </div>
+              <div class="toggle teacher-toggle on" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div class="config-item">
+              <div class="config-item-icon teacher-icon">🌙</div>
+              <div class="config-item-info">
+                <div class="config-item-label">Modo Oscuro</div>
+                <div class="config-item-sub">Próximamente</div>
+              </div>
+              <div class="toggle teacher-toggle" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div class="config-item">
+              <div class="config-item-icon teacher-icon">🔊</div>
+              <div class="config-item-info">
+                <div class="config-item-label">Sonido</div>
+                <div class="config-item-sub">Efectos de sonido</div>
+              </div>
+              <div class="toggle teacher-toggle on" onclick="this.classList.toggle('on')"></div>
+            </div>
+          </div>
+          <div class="config-card">
+            <div class="config-card-title">General</div>
+            <div class="config-item">
+              <div class="config-item-icon teacher-icon">🌐</div>
+              <div class="config-item-info">
+                <div class="config-item-label">Idioma</div>
+                <div class="config-item-sub">Español</div>
+              </div>
+              <span class="config-item-action">›</span>
+            </div>
+            <div class="config-item">
+              <div class="config-item-icon teacher-icon">🛡️</div>
+              <div class="config-item-info">
+                <div class="config-item-label">Privacidad y Seguridad</div>
+                <div class="config-item-sub">Gestiona tus datos</div>
+              </div>
+              <span class="config-item-action">›</span>
+            </div>
+            <div class="config-item">
+              <div class="config-item-icon teacher-icon">❓</div>
+              <div class="config-item-info">
+                <div class="config-item-label">Ayuda y Soporte</div>
+                <div class="config-item-sub">Centro de ayuda</div>
+              </div>
+              <span class="config-item-action">›</span>
+            </div>
+          </div>
+          <button class="btn-logout" onclick="goTo('screen-login','slide-in-left')">↪ Cerrar Sesión</button>
+          <div class="config-footer">
+            <div>Versión 1.0.0</div>
+            <div>© 2025 Muuu – Universidad del Magdalena</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /phone-screen -->
+  </div><!-- /phone-frame -->
+
+  <!-- ═══════════════════════════════════════ -->
+  <!--  NAVIGATION CONTROLS                   -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="nav-controls">
+    <button class="nav-ctrl-btn active" onclick="navTo('screen-splash')">Splash</button>
+    <button class="nav-ctrl-btn" onclick="navTo('screen-login')">Login</button>
+    <button class="nav-ctrl-btn" onclick="navTo('screen-role')">Registro</button>
+    <div class="section-divider"></div>
+    <button class="nav-ctrl-btn" onclick="navTo('screen-home-student')">🎓 Home</button>
+    <button class="nav-ctrl-btn" onclick="navTo('screen-aprende')">Aprende</button>
+    <button class="nav-ctrl-btn" onclick="navTo('screen-prueba')">Prueba</button>
+    <button class="nav-ctrl-btn" onclick="navTo('screen-desafio')">Desafío</button>
+    <button class="nav-ctrl-btn" onclick="navTo('screen-sala-desafio')">Sala</button>
+    <button class="nav-ctrl-btn" onclick="navTo('screen-progreso')">Progreso</button>
+    <button class="nav-ctrl-btn" onclick="navTo('screen-ranking')">Ranking</button>
+    <button class="nav-ctrl-btn" onclick="navTo('screen-menu')">Menú</button>
+    <button class="nav-ctrl-btn" onclick="navTo('screen-perfil')">Perfil</button>
+    <button class="nav-ctrl-btn" onclick="navTo('screen-config')">Config.</button>
+    <div class="section-divider"></div>
+    <button class="nav-ctrl-btn teacher-ctrl" onclick="navTo('screen-home-teacher')">👨‍🏫 Docente</button>
+    <button class="nav-ctrl-btn teacher-ctrl" onclick="navTo('screen-flashcard-designer')">Flashcard</button>
+    <button class="nav-ctrl-btn teacher-ctrl" onclick="navTo('screen-perfil-docente')">Perfil Doc.</button>
+    <button class="nav-ctrl-btn teacher-ctrl" onclick="navTo('screen-config-docente')">Config. Doc.</button>
+  </div>
+
+</div><!-- /phone-wrapper -->
+
+<script src="js/app.js"></script>
+</body>
+</html>
